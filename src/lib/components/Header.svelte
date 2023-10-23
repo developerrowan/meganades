@@ -23,7 +23,7 @@
 <dialog id="how-to-play-modal" class="modal">
   <div class="modal-box">
     <h3 class="font-bold text-lg text-center">How to Play</h3>
-    <p class="py-2">The goal of this game is to identify 5 alternades.</p>
+    <p class="py-2">The goal of this game is to identify 10 alternades.</p>
     <p class="pb-3">An alternade is a word in which sequences of alternating letters make up at least two other words. <b>All letters must be used.</b></p>
     <p class="pb-2">For example:</p>
     <p class="pb-2"><b>PAINED</b> = <kbd class="kbd-sm">PIE</kbd> and <kbd class="kbd-sm">AND</kbd></p>
@@ -40,7 +40,7 @@
 <dialog id="start-modal" class="modal">
   <div class="modal-box">
     <h3 class="font-bold text-lg text-center">How to Play</h3>
-    <p class="py-2">The goal of this game is to identify 5 alternades.</p>
+    <p class="py-2">The goal of this game is to identify 10 alternades.</p>
     <p class="pb-3">An alternade is a word in which sequences of alternating letters make up at least two other words. <b>All letters must be used.</b></p>
     <p class="pb-2">For example:</p>
     <p class="pb-2"><b>PAINED</b> = <kbd class="kbd-sm">PIE</kbd> and <kbd class="kbd-sm">AND</kbd></p>
