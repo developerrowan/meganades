@@ -22,6 +22,7 @@ export const todaysSeed = writable(0);
 
 export const timer = writable(0);
 export const isTimerPaused = writable(true);
+export const timerObj = writable(null);
 
 export const showAnswerExplanations = writable(false);
 export const alternadesList = writable([] as string[]);

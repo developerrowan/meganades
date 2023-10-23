@@ -10,7 +10,6 @@
   todaysDateObj.set(dt);
   todaysDate.set(dt.toString());
   todaysSeed.set(getSeed());
-  setWords();
   games.set(getGames());
 
   createNewGame();
@@ -35,6 +34,7 @@
     showModal('start-modal');
   }
 
+  setWords();
 </script>
 
 <main class="flex flex-col min-h-screen">

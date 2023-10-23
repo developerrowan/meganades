@@ -1,5 +1,5 @@
 import { tick } from 'svelte';
-import { storedGames, totalGuesses, incorrectGuesses, correctGuesses, timer, games, type LocalStorageEntry, type LocalStorageContainer, neededToWin, wordOne, wordTwo, wordThree, wordFour, wordList, todaysSeed, todaysDate, isTimerPaused, successWord, dangerWord, todaysDateObj } from './store';
+import { storedGames, totalGuesses, incorrectGuesses, correctGuesses, timer, games, type LocalStorageEntry, type LocalStorageContainer, neededToWin, wordOne, wordTwo, wordThree, wordFour, wordList, todaysSeed, todaysDate, isTimerPaused, successWord, dangerWord, todaysDateObj, timerObj } from './store';
 import { get } from 'svelte/store';
 import { getAlternades } from './lists';
 import { DateTime } from 'luxon';
@@ -102,17 +102,11 @@ export function getGames() {
     startGame()
   }
 
-  export function startGame() {
-    const el = document.getElementById('start-modal') as HTMLFormElement;
-    el.close();
-
-    isTimerPaused.set(false);
-
-    saveTimer();
+  export function resetTimerObj() {
 
     let lastTime = window.performance.now();
     let frame;
-    (function update() {
+    timerObj.set((function update() {
       if (get(isTimerPaused))
         return;
 
@@ -123,9 +117,19 @@ export function getGames() {
       let timerValue = get(timer);
 
       timer.set(timerValue += time - lastTime);
-
       lastTime = time;
-    })();
+    })())
+  }
+
+  export function startGame() {
+    const el = document.getElementById('start-modal') as HTMLFormElement;
+    el.close();
+
+    isTimerPaused.set(false);
+
+    resetTimerObj();
+
+    saveTimer();
   }
 
   export async function showModal(name: string) {
@@ -190,7 +194,6 @@ export function getGames() {
 
   function getRandomWord(list: string[]) {
     const i = Math.floor(Math.random()*list.length);
-    console.log(i);
     return list[i];
   }
 

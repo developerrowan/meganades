@@ -1,8 +1,10 @@
 <script lang="ts">
-  import { continueGame, getSubWord, handleWebShare, startGame } from '../data/gameManager';
-  import { alternadesList, correctGuesses, incorrectGuesses, neededToWin, showAnswerExplanations, timer, totalGuesses } from '../data/store';
+  import { continueGame, getSubWord, handleWebShare, resetTimerObj, startGame } from '../data/gameManager';
+  import { alternadesList, correctGuesses, incorrectGuesses, isTimerPaused, neededToWin, showAnswerExplanations, timer, totalGuesses } from '../data/store';
 
   function showHelpModal() {
+    isTimerPaused.set(true);
+
     const el = document.getElementById('how-to-play-modal') as HTMLFormElement;
     el.showModal();
   }
@@ -34,7 +36,7 @@
     <p class="pb-4"><b>Some alternades may seem nonsensical. Please note all words are legal, however progress is being made to refine the word list.</b></p>
   </div>
   <form method="dialog" class="modal-backdrop">
-    <button>close</button>
+    <button on:click={()=>{isTimerPaused.set(false); resetTimerObj();}}>close</button>
   </form>
 </dialog>
 <dialog id="start-modal" class="modal">
