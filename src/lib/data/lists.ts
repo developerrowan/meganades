@@ -1,4 +1,4 @@
-import { DateTime } from 'luxon';
+import { DateTime, Interval } from 'luxon';
 import Srand from 'seeded-rand';
 import { alternadesList } from './store';
 
@@ -18,9 +18,11 @@ export interface ListEntry {
 };
 
 export function getSeed() {
-    const date = DateTime.now();
+    const date = DateTime.now().startOf('day');
+    const date2 = DateTime.fromISO('2000-01-01T00:00').startOf('day');
+    const diff = Interval.fromDateTimes(date2, date);
 
-    return date.year + date.month + date.day;
+    return diff.length('days');
 }
 
 export function generateWordList(): ListEntry[] {
